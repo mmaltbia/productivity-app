@@ -1,0 +1,59 @@
+* {
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+html, body{
+	height:100%;
+}
+
+#nav {
+	background-color: #F15A24;
+}
+
+h1 {
+	color: #fff;
+	font-family: Oswald;
+}
+
+#sidebar{
+	background-color: #E6E6E6;
+}
+
+.container .row{
+	height: 100%;
+}
+
+.fill {
+	height: 100%;
+}
+
+input.btn.btn-success {
+	background-color: #39038A;
+	margin-top: 30px;
+}
+
+.btn-success {
+	border-color: #39038A;
+}
+
+#main {
+	background-color: #F2F2F2;
+}
+
+#project h1 {
+	color: gray;
+	margin-top: 30px;
+}
+
+.form-control {
+	margin-top: 15px;
+}
+
+#add-task {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
