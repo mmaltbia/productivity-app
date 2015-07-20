@@ -5,7 +5,6 @@ var express = require('express'),
 
 var app = express();
 
-
 //serve js and css files
 app.use(express.static(__dirname + '/public'));
 
@@ -15,8 +14,7 @@ mongoose.connect(
 	"mongodb://localhost/productivity-app");
 
 app.get(‘/’, function(req, res){
-	var index = __dirname + ‘/public/index.html’;
-	res.sendFile(index)
-}
+	res.sendFile(__dirname + ‘/public/index.html’)
+});
 
 app.listen(process.env.PORT || 3000);
