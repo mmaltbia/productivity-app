@@ -13,8 +13,8 @@ mongoose.connect(
   	process.env.MONGOHQ_URL ||
 	"mongodb://localhost/productivity-app");
 
-app.get(‘/’, function(req, res){
-	res.sendFile(__dirname + ‘/public/index.html’)
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/public/index.html')
 });
 
 app.listen(process.env.PORT || 3000);
