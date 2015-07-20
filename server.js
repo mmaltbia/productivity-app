@@ -1,9 +1,10 @@
-$(document).ready(function(){
-
 var express = require('express'),
-	undescore = require('undrescore'),
+	underscore = require('underscore'),
 	mongoose = require('mongoose'),
-	body-parser = require('body-parser');
+	bodyParser = require('body-parser');
 
-//	Closing Tags
-})
+var app = express();
+
+mongoose.connect("mongodb://localhost/productivity-app");
+
+app.listen(process.env.PORT || 3000);
