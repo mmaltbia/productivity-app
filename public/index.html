@@ -10,11 +10,13 @@
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300|Roboto+Slab:300,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
-
+    <!-- Text Editor Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-sanitize.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/61329/textAngular-1.1.1.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -28,13 +30,22 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12" id="nav">
-                <h1>DOPRO</h1>
+                <span class="highlight">PRO</span>
+                <span class>JECT</span>
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-4 fill container-fluid" id="sidebar">
-                 <input type="submit" class="btn btn-success col-sm-12" value="Create New Project" data-toggle="modal" data-target="#myModal"> 
+                <div id="search-input-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                      </span>
+                    </div>
+                </div><!-- /input-group -->
+                 <input type="submit" class="btn btn-success col-sm-12" value="&#43; Create New Project" data-toggle="modal" data-target="#myModal"> 
             </div>
 
             <!-- Modal -->
@@ -43,7 +54,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create New Project</h4>
+                    <h2 class="dark-gray" id="create-proj">Create New Project</h2>
                   </div>
                   <div class="modal-body">
                         <form class="form" id="new-post">
@@ -65,15 +76,30 @@
             <!-- Modal End-->
 
             <div class="col-xs-8" id="main">
-                <div id="project">
-                    <h1 class="text-center">No Projects Have Been Added Yet - Add Some!</h1>
+                <div ng-app="rich-text-module" class="rich-text-module">
+                    <div ng-init="test='Add text'">
+                    <text-angular ng-model="test"></text-angular>
+                    <textarea class="result" ng-model="test" readonly></textarea>
+                    <button ng-click="test='Add text'">Reset</button>
+                  </div>
                 </div>
             </div>
+            <!-- /Main Content Area 1-->
+            <div class="col-xs-8" id="main-2">
+               <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
+                    0%
+                  </div>
+                </div>
+            </div>
+            <!-- /Main Content Area 2-->
         </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Angular Module Script-->
+    <script src="/bower_components/angular/angular.js"></script>
     <!-- Bootstrap Script Tag -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Underscore Script Tag -->
