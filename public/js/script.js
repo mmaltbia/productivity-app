@@ -238,6 +238,7 @@ if (window.requestFileSystem) {
   alert('Sorry! Your browser doesn\'t support the FileSystem API :(');
 }
 console.log('hello');
+// Text Editor End
 
 //	Project Constructor
 

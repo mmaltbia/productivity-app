@@ -33,6 +33,10 @@ html {
   box-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
+#nav > span:nth-child(2){
+	margin-left: -4px;
+}
+
 h1 {
   margin: 0;
 }
@@ -162,6 +166,7 @@ span.highlight {
 	font-weight: 600;
 }
 
+
 span {
 	color: #fff;
 	font-size: 28px;
@@ -225,8 +230,6 @@ input.btn.btn-success {
 	margin-top: 0;
 }
 
-
-
 #search-input-group {
 	margin-top: 30px;
 }
@@ -236,6 +239,29 @@ input.btn.btn-success {
 	font-size: 20px;
 	text-transform: uppercase;
 	color: #666666;
+	font-weight: 600;
+}
+
+#proj-status > ul {
+	color: green;
+	font-size: 28px;
+	vertical-align: center;
+}	
+#proj-status > ul > li:nth-child(1){
+	margin-top: 100px;
+}
+
+#proj-status > ul > li {
+	margin-top: 15px;
+}
+
+#proj-status > ul > li > span
+{
+  font-size: 16px;
+  list-style-position: initial;
+  font-weight: normal;
+  color: #666666;
+  text-transform: uppercase;
 }
 
 .btn-success {
@@ -337,4 +363,28 @@ body {
 
 #stickies {
 	height: 50vh;
+}
+
+/*Sticky Styling Begin*/
+
+#sticky1 > p {
+	background-color: #D9E021;
+	min-height: 200px;
+	box-shadow: 2px 2px #A9AF1F;
+}
+
+#sticky2 > p {
+	background-color: #8CC63F;
+	min-height: 200px;
+  	box-shadow: 2px 2px #618B2A
+}
+
+#sticky3 > p {
+	background-color: #E5C22E;
+	min-height: 200px;
+	box-shadow: 2px 2px #A88F22;
+}
+
+body > div > div.row.center {
+	margin-top: 15%;
 }
