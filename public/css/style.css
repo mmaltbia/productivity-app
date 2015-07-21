@@ -225,6 +225,8 @@ input.btn.btn-success {
 	margin-top: 0;
 }
 
+
+
 #search-input-group {
 	margin-top: 30px;
 }
@@ -272,7 +274,7 @@ body {
   padding: .2em;
 }
 .ta-editor {
-  min-height: 300px;
+  max-height: 280px;
   height: auto;
   overflow: auto;
   font-family: inherit;
@@ -319,4 +321,20 @@ body {
   padding: .5em;
   text-shadow: 1px 1px 0 rgba(255,255,255,.2);
   margin-top:.5em;
+}
+
+#filename{
+	margin-top: 25px;
+}
+
+#content {
+	min-height: 200px;
+}
+
+#file-form{
+	margin-left: 4px;
+}
+
+#stickies {
+	height: 50vh;
 }
