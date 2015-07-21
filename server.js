@@ -2,8 +2,6 @@ var express = require('express'),
 	underscore = require('underscore'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser');
-	richText = require('./lib/type');;
-	angular = require('./angular');
 
 var app = express();
 
