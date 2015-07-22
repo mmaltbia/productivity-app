@@ -3,27 +3,79 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 	Project = require('./models/projects.js'),
+	User = require('./models/users.js'),
+	Project = require('./models/projects.js')
+	bcrypt = require('bcrypt'),
+	salt = bcrypt.genSaltSync(10),
+	session = require('express-session'),
+	config = require('./config'),
  	app = express();
 
 //serve js and css files
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
-	
+
+// configure session
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: config.SESSION_SECRET,
+  cookie: { maxAge: 60000 }
+}));
+
+// Middleware
+
+app.use('/', function (req, res, next) {
+ // saves userId in session for logged-in user
+ req.login = function (user) {
+   req.session.userId = user._id;
+ };
+
+ // finds user currently logged in based on `session.userId`
+ req.currentUser = function (callback) {
+   User.findOne({_id: req.session.userId}, function (err, user) {
+     req.user = user;
+     callback(null, user);
+   });
+ };
+
+ // destroy `session.userId` to log out user
+ req.logout = function () {
+   req.session.userId = null;
+   req.user = null;
+ };
+
+ next();  // required for middleware
+});
+
+// Connect Mongo DB
 mongoose.connect(
   	process.env.MONGOLAB_URI ||
   	process.env.MONGOHQ_URL ||
-	"mongodb://localhost/productivity-app");
+	"mongodb://localhost/productivity-app"
+);
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/public/views/index.html')
 });
 
+// PROJECT ROUTES
+app.get('/api/projects/:id', function(req, res){
+	Project.findOne({"_id": req.params.id}).exec(function(req, project){
+		console.log(project);
+		res.send(project);
+	});
+});
+
 app.get('/api/projects', function(req, res){
 	Project.find().exec(function(req,projects){
-		res.send(projects);
 		console.log(projects);
+
+		res.send(projects);
 	});
 })
+
+
 
 app.post('/api/projects', function(req, res){
 	console.log(req.body);
@@ -31,6 +83,63 @@ app.post('/api/projects', function(req, res){
 	project.save(function(err, project){
 		res.json(project);
 	});
+});
+
+
+app.get('/signup', function(req, res){
+	res.sendFile(__dirname + '/public/views/signup.html')
+});
+
+// signup route (renders signup view)
+app.get('/signup', function (req, res) {
+      res.sendFile(__dirname + '/public/views/signup.html');
+});
+
+app.get('/login', function(req, res){
+	res.sendFile(__dirname + '/public/views/login.html');
 })
+
+// Create a new user
+app.post('/users', function (req, res) {
+
+  // grab user data from params (req.body)
+  var newUser = req.body.user;
+
+  // create new user with secure password
+  User.createSecure(newUser.email, newUser.password, function (err, user) {
+    console.log(user);
+    req.login(user);
+    res.redirect('/');
+  });
+});
+
+// authenticate user and set session
+app.post('/login', function (req, res) {
+    var userData = {
+      email: $("#login-user-email").val(),
+      password: $("#login-user-password").val()
+    };
+  console.log("server received login form data: ", 
+    req.body.email, req.body.password);
+  // server's version of userData
+  var userData = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  User.authenticate(userData.email, userData.password, function (err, user) {
+    if (user === null){
+      req.login(user);
+      res.redirect('/');
+
+      console.log("logged in")
+      res.json(user);
+    } else {
+      // find some way to handle 
+      // whatever error came from the authentication code
+      res.status(500).send(err);
+    }
+  });
+});
+
 
 app.listen(process.env.PORT || 3000);

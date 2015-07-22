@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	notes = require('./notes')
+	notes = require('./notes');
 
 var ProjectSchema = new Schema({
     name: String,

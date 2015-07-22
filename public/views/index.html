@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Inline Editor for Project List -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap-editable/css/bootstrap-editable.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
     <!-- Text Editor Script -->
@@ -46,8 +48,8 @@
                 </div><!-- /input-group -->
                  <input type="submit" class="btn btn-success col-sm-12" value="&#43; Create New Project" data-toggle="modal" data-target="#myModal"/> 
                  <script id="project-template" type='text/template'>
-                    <li>
-                        <span class="in-progress"><%= name %></span>
+                    <li class="project-list-item" data-project-id="<%= _id %>">
+                        <%= name %>
                     </li>
                  </script>
 
@@ -84,14 +86,14 @@
             </div>
             <!-- /Modal -->
 
-            <div class="col-xs-8" id="main">
-                <div id="main-content" class="row"></div>
-            </div>
-
-            <script type="text/template" id="main-template">
-                    <h3> <%= name =%> </h3>
-                    <h4> <%= description => </h4>
+            <script id="main-template" type="text/template">
+                <h3> <%= name %> </h3>
+                <h4> <%= description %> </h4>
             </script>
+
+            <div class="col-xs-8" id="main">
+                
+            </div>
            
             <!-- /Main Content Area 1-->
 

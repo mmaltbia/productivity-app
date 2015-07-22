@@ -242,6 +242,11 @@ input.btn.btn-success {
 	font-weight: 600;
 }
 
+div#sidebar {
+  overflow-y: auto;
+}
+
+
 #proj-status > ul {
 	color: green;
 	font-size: 28px;
