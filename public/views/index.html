@@ -45,19 +45,15 @@
                     </div>
                 </div><!-- /input-group -->
                  <input type="submit" class="btn btn-success col-sm-12" value="&#43; Create New Project" data-toggle="modal" data-target="#myModal"/> 
+                 <script id="project-template" type='text/template'>
+                    <li>
+                        <span class="in-progress"><%= name %></span>
+                    </li>
+                 </script>
+
                     <div id="proj-status">
-                        <ul>
-                            <li>
-                                <span class="in-progress">CoJo - Project Workbook</span>
-                            </li>
-
-                            <li>
-                                <span class="in-progress">Tic Tac Toe - Refactor</span>
-                            </li>
-
-                            <li>
-                                <span class="in-progress">Catch Phrasely</span>
-                            </li>
+                        <ul id="projects">
+                            
                         </ul>
                     </div>
             </div>
@@ -74,34 +70,28 @@
                   <div class="modal-body">
                         <form class="form" id="new-post">
                           <div class="newformline1">
-                            <input type="text" name="proj-name" class="form-control" id="proj-name" placeholder="Project Name" autofocus>   
+                            <input type="text" name="proj-name" class="form-control" id="proj-name" placeholder="Project Name" autofocus> 
                             <input type="text" name="proj-description" class="form-control" id="proj-description" placeholder="Project Description">
-                            <input type="text" name="proj-task" class="form-control" id="proj-task" placeholder="New Task">
-                            <button type="button" class="btn btn-primary col-xs-12" id="add-task">Add Another Task</button>
                           </div>
                         </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="add-project">Save changes</button>
+                    <input type="submit" class="btn btn-primary add" id="add-project">Save changes</input>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Modal End-->
+            <!-- /Modal -->
 
             <div class="col-xs-8" id="main">
-                <div class="row">
-                    <form action="#" method="POST" id="file-form" class="col-xs-8">
-                      <div class="field">
-                        <input type="text" name="filename" id="filename" placeholder="Project Name">
-                      </div>
-                      <div class="field">
-                        <textarea name="content" id="content" placeholder="Type project details here."></textarea>
-                      </div>
-                    </form>
-                </div>
+                <div id="main-content" class="row"></div>
             </div>
+
+            <script type="text/template" id="main-template">
+                    <h3> <%= name =%> </h3>
+                    <h4> <%= description => </h4>
+            </script>
            
             <!-- /Main Content Area 1-->
 
@@ -138,5 +128,6 @@
     <!-- Custom Script Tag -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="../js/script.js"></script>
   </body>
 </html>
