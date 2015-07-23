@@ -4,7 +4,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	Project = require('./models/projects.js'),
 	User = require('./models/users.js'),
-	Project = require('./models/projects.js')
+	Notes = require('./models/notes.js'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	session = require('express-session'),
@@ -75,16 +75,21 @@ app.get('/api/projects', function(req, res){
 	});
 })
 
+//	ADD PROJECTS TO CURRENT USER
 app.post('/api/projects', function(req, res){
 	console.log(req.body);
 	var project = new Project(req.body);
 	project.save(function(err, project){
+		User.findOne({_id: req.session.userId}).exec(function (err, user) {
+			user.projects.push(project);
+			user.save();
+		});
 		res.json(project);
 	});
 });
 
 //	STICKY NOTES ROUTE
-app.post('/notes', function(req, res){
+app.post('api/projects/notes', function(req, res){
 	console.log(req.body);
 })
 
@@ -93,49 +98,48 @@ app.get('/signup', function(req, res){
 	res.sendFile(__dirname + '/public/views/signup.html')
 });
 
-// signup route (renders signup view)
-app.get('/signup', function (req, res) {
-      res.sendFile(__dirname + '/public/views/signup.html');
-});
-
 app.get('/login', function(req, res){
 	res.sendFile(__dirname + '/public/views/login.html');
 })
 
 // Create a new user
 app.post('/users', function (req, res) {
-
+	console.log('signing up');
   // grab user data from params (req.body)
   var newUser = req.body.user;
 
   // create new user with secure password
-  User.createSecure(newUser, function (err, user) {
+  User.createSecure(newUser.email, newUser.password, function (err, user) {
     console.log(user);
     req.login(user);
     res.redirect('/');
   });
 });
 
-app.get('/currentUser', function(req, res){
-	req.currentUser(function(err, user){
-		res.json(user);
-	})
+//	Login users to their unique profile
+app.get('/api/me', function(req, res){
+	User.findOne({_id: req.session.userId}).populate('projects').exec(function (err, user) {
+	  req.user = user;
+	  res.json(user);
+	});
 })
 
 // authenticate user and set session
 app.post('/login', function (req, res) {
+	console.log('logging in');
   var userData = {
     email: req.body.email,
     password: req.body.password
   };
+
   User.authenticate(userData.email, userData.password, function (err, user) {
     if (user){
       req.login(user);
-      // console.log('logged in');
-      // res.redirect('/');
+      console.log('logged in:', user);
+      res.redirect('/');
 
       console.log("logged in")
-      res.json(user);
+   
     } else {
       // find some way to handle 
       // whatever error came from the authentication code

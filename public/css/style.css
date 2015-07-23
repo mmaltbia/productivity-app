@@ -225,11 +225,39 @@ h1 {
 	height: 100vh;
 }
 
+#projects > li {
+  text-transform: uppercase;
+  font-family: Raleway;
+  font-size: 16px;
+}
+
 #sticky-area li {
   list-style: none;
 }
 
-.container .row{
+.note {
+  background-color: yellow;
+}
+
+#sticky-form > input[type="text"]{
+    background-color: yellow;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+#sticky-form > textarea {
+    background-color: yellow;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+#title {
+  height: 50%;
+}
+
+.container .row {
 	height: 100%;
 }
 

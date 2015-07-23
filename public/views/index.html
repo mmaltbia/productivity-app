@@ -13,10 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap-editable/css/bootstrap-editable.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:600,400' rel='stylesheet' type='text/css'>
-    <!-- Text Editor Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-sanitize.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/61329/textAngular-1.1.1.min.js"></script>
+    <!-- Inline Editor Script -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -80,12 +78,15 @@
                           <div class="newformline1">
                             <input type="text" name="proj-name" class="form-control" id="proj-name" placeholder="Project Name" autofocus> 
                             <input type="text" name="proj-description" class="form-control" id="proj-description" placeholder="Project Description">
+                            <input type="text" name="proj-notes" class="form-control" id="proj-notes" placeholder="Project Notes" autofocus> 
                           </div>
                         </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary add" id="add-project">Save changes</input>
+                    <div class="row">
+                        <input type="submit" class="btn btn-primary add col-xs-8" id="add-project">
+                        <button type="button" class="btn btn-default col-xs-2" data-dismiss="modal">Close</button>
+                    </div> 
                   </div>
                 </div>
               </div>
@@ -97,23 +98,34 @@
                 <h4> <%= description %> </h4>
             </script>
 
-            <div class="col-xs-8" id="main">
+            
+                <div class="col-xs-8" id="main">
+                    
+                </div>
+               
                 
-            </div>
-           
+            
+
             <!-- /Main Content Area 1-->
 
             <div id="main-2" class="container col-sm-8">  
                 <input type="submit" value="Add Sticky Note" class="btn btn-primary add col-xs-4" id="add-sticky"></input>
-                
+                <div class="col-xs-4" id="save-button">
+                    <input type="submit" class="btn btn-primary add" id="add-project" value="Save"/>
+                </div>
                 <script id="sticky-template" type="text/template">
-                    <li class="col-xs-4">
-                        <textarea rows="1" cols="5"></textarea>
+                    <li>
+                        <form id="sticky-form" class="col-xs-4">
+                          <input type="text" name="usrname" placeholder="Title">
+                          <textarea name="comment" form="sticky-form">Jot it down.</textarea>
+                        </form>
                     </li>
                 </script>
 
                 <div id="sticky-area" class="col-xs-12">
                     <ul>
+
+
                         
                     </ul>
                 </div>
@@ -141,6 +153,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Underscore Script Tag -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <!-- Inline Editor Script Tag -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <!-- Custom Script Tag -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
