@@ -75,8 +75,6 @@ app.get('/api/projects', function(req, res){
 	});
 })
 
-
-
 app.post('/api/projects', function(req, res){
 	console.log(req.body);
 	var project = new Project(req.body);
@@ -85,7 +83,12 @@ app.post('/api/projects', function(req, res){
 	});
 });
 
+//	STICKY NOTES ROUTE
+app.post('/notes', function(req, res){
+	console.log(req.body);
+})
 
+//	SIGNUP/LOGIN ROUTES
 app.get('/signup', function(req, res){
 	res.sendFile(__dirname + '/public/views/signup.html')
 });
@@ -106,30 +109,30 @@ app.post('/users', function (req, res) {
   var newUser = req.body.user;
 
   // create new user with secure password
-  User.createSecure(newUser.email, newUser.password, function (err, user) {
+  User.createSecure(newUser, function (err, user) {
     console.log(user);
     req.login(user);
     res.redirect('/');
   });
 });
 
+app.get('/currentUser', function(req, res){
+	req.currentUser(function(err, user){
+		res.json(user);
+	})
+})
+
 // authenticate user and set session
 app.post('/login', function (req, res) {
-    var userData = {
-      email: $("#login-user-email").val(),
-      password: $("#login-user-password").val()
-    };
-  console.log("server received login form data: ", 
-    req.body.email, req.body.password);
-  // server's version of userData
   var userData = {
     email: req.body.email,
     password: req.body.password
   };
   User.authenticate(userData.email, userData.password, function (err, user) {
-    if (user === null){
+    if (user){
       req.login(user);
-      res.redirect('/');
+      // console.log('logged in');
+      // res.redirect('/');
 
       console.log("logged in")
       res.json(user);
@@ -139,6 +142,12 @@ app.post('/login', function (req, res) {
       res.status(500).send(err);
     }
   });
+});
+
+// log out user (destroy session)
+app.get('/logout', function (req, res) {
+ req.logout();
+ res.redirect('/');
 });
 
 

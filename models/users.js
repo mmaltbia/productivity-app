@@ -33,10 +33,9 @@ UserSchema.statics.authenticate = function (email, password, callback) {
   // find user by email entered at log in
   this.findOne({email: email}, function (err, user) {
     console.log(user);
-    
-    // throw error if can't find user
+
     if (user === null) {
-      throw new Error('Invalid email or password');
+      callback('Invalid email or password', null);
 
     // if found user, check if password is correct
     } else if (user.checkPassword(password)) {
