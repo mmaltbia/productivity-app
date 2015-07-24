@@ -32,6 +32,7 @@ $(document).ready(function(){
 					$('#main').html($mainTemplate(data));
 				});
 				$('#add-sticky').show();
+				$('#sticky-area').empty();
 			})
 
 	// GET PROJECTS

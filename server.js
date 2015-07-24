@@ -87,7 +87,11 @@ app.post('/api/projects', function(req, res){
 	});
 });
 
-//	STICKY NOTES ROUTE
+// //	STICKY NOTES ROUTE
+// app.get('/api/projects/:projectId/notes', function(req, res){
+// 	res.json(notes);
+// })
+
 app.post('/api/projects/:projectId/notes', function(req, res){
 	var notes = req.body.notes;
 	Project.findOne({_id: req.params.projectId}).exec(function (err, project){
