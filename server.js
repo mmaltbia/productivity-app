@@ -1,10 +1,10 @@
 var express = require('express'),
-	underscore = require('underscore'),
+	_ = require('underscore'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
 	Project = require('./models/projects.js'),
 	User = require('./models/users.js'),
-	Notes = require('./models/notes.js'),
+	Note = require('./models/notes.js'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	session = require('express-session'),
@@ -88,8 +88,16 @@ app.post('/api/projects', function(req, res){
 });
 
 //	STICKY NOTES ROUTE
-app.post('api/projects/:projectId/notes', function(req, res){
-	console.log(req.body);
+app.post('/api/projects/:projectId/notes', function(req, res){
+	var notes = req.body.notes;
+	Project.findOne({_id: req.params.projectId}).exec(function (err, project){
+		_.each(notes, function(oneNote){
+			var note = new Note(oneNote);
+			project.notes.push(note);
+		})
+		project.save();
+		res.json(project);
+	})
 })
 
 //	SIGNUP/LOGIN ROUTES

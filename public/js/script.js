@@ -53,8 +53,21 @@ $(document).ready(function(){
 	//	ADD STICKY NOTE TO DB
 	$('#save-button').on('click', function(event){
 		event.preventDefault();
-		$.post('/api/projects/:projects/notes', function(data){
+		var newNotes = [];
+		$('.sticky-form').each(function(){
+			var note = {
+				title: $(this).find('.title').val(),
+				text: $(this).find('.text-area').val()
+			};
+			console.log(note);
+			newNotes.push(note);
+		})
+
+		var id = $('.project-details').attr('data-id');
+		$.post('/api/projects/' + id + '/notes', {notes: newNotes}, function(data){
+			
 			console.log(data);
+			
 		})
 		console.log('save button clicked');
 	})

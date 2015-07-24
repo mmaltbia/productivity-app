@@ -124,8 +124,10 @@
 
 
             <script id="main-template" type="text/template">
-                <h3> <%= name %> </h3>
-                <h4> <%= description %> </h4>
+                <div class="project-details" data-id="<%= _id %>">
+                    <h3> <%= name %> </h3>
+                    <h4> <%= description %> </h4>
+                </div>
             </script>
 
             
@@ -145,9 +147,9 @@
                 </div>
                 <script id="sticky-template" type="text/template">
                     <li>
-                        <form id="sticky-form" class="col-xs-4">
-                          <input type="text" name="usrname" placeholder="Title">
-                          <textarea name="comment" form="sticky-form">Jot it down.</textarea>
+                        <form class="sticky-form" class="col-xs-4">
+                          <input class="title" type="text" placeholder="Title">
+                          <textarea class="text-area">Jot it down.</textarea>
                         </form>
                     </li>
                 </script>
