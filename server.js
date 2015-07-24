@@ -8,7 +8,6 @@ var express = require('express'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	session = require('express-session'),
-	config = require('./config'),
  	app = express();
 
 //serve js and css files
@@ -19,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
   saveUninitialized: true,
   resave: true,
-  secret: process.env.SESSION_SECRET || config.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || require('./config').SESSION_SECRET,
   cookie: { maxAge: 60000 }
 }));
 
@@ -89,7 +88,7 @@ app.post('/api/projects', function(req, res){
 });
 
 //	STICKY NOTES ROUTE
-app.post('api/projects/:projects/notes', function(req, res){
+app.post('api/projects/:projectId/notes', function(req, res){
 	console.log(req.body);
 })
 

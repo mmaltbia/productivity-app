@@ -58,9 +58,6 @@ $(document).ready(function(){
 		})
 		console.log('save button clicked');
 	})
-	// $.post('/api/notes', function(response){
-
-	// });
 
 	// SUBMIT NEW PROJECT
 	$('#add-project').on('click', function(event){
