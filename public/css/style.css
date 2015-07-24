@@ -17,6 +17,11 @@ html, body{
   font-size: 25px;
 }
 
+#red {
+  color: #c43812;
+}
+
+
 html {
   font-family: Raleway, sans-serif;
   font-size: 100%;
@@ -31,6 +36,13 @@ html {
 
 h3, h4 {
   font-family: Raleway, sans-serif;
+}
+
+.squares {
+  height:200px;
+  background-color: gray;
+  color: white;
+  text-transform: uppercase;
 }
 
 #add-sticky {

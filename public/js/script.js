@@ -1,9 +1,14 @@
 $(document).ready(function(){
 
+	//	HIDE ADD STICKY NOTE BUTTON
+		$('#add-sticky').hide();
+		$('#save-sticky').hide();
+
 	var $projectTemplate = _.template($('#project-template').html()),
 		$mainTemplate = _.template($('#main-template').html()),
 		$stickyTemplate = _.template($('#sticky-template').html());
 		$loggedInTemplate = _.template($('#user-logged-in').html());
+
 
 
 	// Logged in User
@@ -44,10 +49,6 @@ $(document).ready(function(){
 		console.log(data);
 		
 	})
-
-	//	HIDE ADD STICKY NOTE BUTTON
-	$('#add-sticky').hide();
-	$('#save-sticky').hide();
 
 	//	ADD STICKY NOTE	
 	$('#add-sticky').on('click', function(event){

@@ -28,7 +28,7 @@
   <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-8" id="nav">Project</div>
+            <div class="col-xs-8" id="nav"><span id="red">Project</div>
             <div class="col-xs-3 text-right" id="user-info"> </div>
             <div class="col-xs-1" id="logout">Logout</div>
         </div>
@@ -122,7 +122,15 @@
             </div>
             <!-- /Modal -->
 
+            <!-- Welcome Area -->
 
+            <div class="col-sm-8 container">
+                <h3>Welcome Back!</h3>
+                <p> Personalize the content you want to see when you login!</p>
+
+            </div>
+
+            <!-- Project Name and Description Area-->
             <script id="main-template" type="text/template">
                 <div class="project-details" data-id="<%= _id %>">
                     <h3> <%= name %> </h3>
@@ -135,15 +143,14 @@
                     
                 </div>
                
-                
-            
-
             <!-- /Main Content Area 1-->
 
             <div id="main-2" class="container col-sm-8">  
+                <div class="row">
                 <input type="submit" value="Add Sticky Note" class="btn btn-primary add col-sm-4" id="add-sticky"></input>
                 <div class="col-sm-4" id="save-button">
                     <input type="submit" class="btn btn-primary add" id="save-sticky" value="Save"/>
+                </div>
                 </div>
                 <a href=><span class="glyphicon glyphicon-trash col-sm-4"></span></a>
                 <script id="sticky-template" type="text/template">
