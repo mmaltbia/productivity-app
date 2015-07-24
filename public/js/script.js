@@ -6,11 +6,9 @@ $(document).ready(function(){
 		$loggedInTemplate = _.template($('#user-logged-in').html());
 
 
-	// //	CHECK FOR CURRENT USER
-	// $.get('/currentUser', function(data){
-	// 	console.log(data);
-	// 	$('#user-info').html($loggedInTemplate(data));
-	// })
+	// //	Logged in User
+
+	// $('#user-info').html($loggedInTemplate(data));
 
 	$.get('/api/me', function(data){
 		console.log(data);

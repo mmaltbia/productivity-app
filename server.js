@@ -8,7 +8,7 @@ var express = require('express'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	session = require('express-session'),
-	// config = require('./config'),
+	config = require('./config'),
  	app = express();
 
 //serve js and css files
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
   saveUninitialized: true,
   resave: true,
-  // secret: config.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || config.SESSION_SECRET,
   cookie: { maxAge: 60000 }
 }));
 
@@ -155,4 +155,4 @@ app.get('/logout', function (req, res) {
 });
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000); 
