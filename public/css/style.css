@@ -229,6 +229,7 @@ h1 {
   text-transform: uppercase;
   font-family: Raleway;
   font-size: 16px;
+  cursor: pointer; 
 }
 
 #sticky-area li {
