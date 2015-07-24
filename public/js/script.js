@@ -39,6 +39,7 @@ $(document).ready(function(){
 				$('#add-sticky').show();
 				$('#add-project').show()
 				$('#sticky-area').empty();
+				$('#welcome').hide();
 				$.get('/api/projects/:projectId' + $(this).data('project-id'), function(data){
 					console.log(data);
 				})
