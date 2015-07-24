@@ -55,7 +55,7 @@ $(document).ready(function(){
 	//	ADD STICKY NOTE TO DB
 	$('#save-button').on('click', function(event){
 		event.preventDefault();
-		$.post('/api/projects/notes', function(data){
+		$.post('/api/projects/:projects/notes', function(data){
 			console.log(data);
 		})
 		console.log('save button clicked');

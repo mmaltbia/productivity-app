@@ -13,6 +13,7 @@ html, body{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-size: 12px;
 }
 
 html {
@@ -21,6 +22,14 @@ html {
   background: #333;
   color: #33383D;
   -webkit-font-smoothing: antialiased;
+}
+
+/*[data-hidden="hidden"] {
+   visibility: hidden;
+}*/
+
+#add-sticky {
+  margin-top: 25px;
 }
 
 #page-wrapper {
@@ -236,6 +245,7 @@ h1 {
   list-style: none;
 }
 
+
 .note {
   background-color: yellow;
 }
@@ -245,6 +255,10 @@ h1 {
     border: none;
     box-shadow: none;
     border-radius: 0;
+}
+
+.glyphicon .glyphicon-pencil {
+  font-size: 12px;
 }
 
 #sticky-form > textarea {
@@ -306,7 +320,7 @@ div#sidebar {
 	vertical-align: center;
 }	
 #proj-status > ul > li:nth-child(1){
-	margin-top: 100px;
+	margin-top: 15px;
 }
 
 #proj-status > ul > li {

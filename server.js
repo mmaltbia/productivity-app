@@ -8,7 +8,7 @@ var express = require('express'),
 	bcrypt = require('bcrypt'),
 	salt = bcrypt.genSaltSync(10),
 	session = require('express-session'),
-	config = require('./config'),
+	// config = require('./config'),
  	app = express();
 
 //serve js and css files
@@ -89,7 +89,7 @@ app.post('/api/projects', function(req, res){
 });
 
 //	STICKY NOTES ROUTE
-app.post('api/projects/notes', function(req, res){
+app.post('api/projects/:projects/notes', function(req, res){
 	console.log(req.body);
 })
 
