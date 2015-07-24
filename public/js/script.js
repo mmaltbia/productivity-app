@@ -29,6 +29,13 @@ $(document).ready(function(){
 		}
 	})
 
+	// 	//	ADD STICKY NOTE	
+	// $('#add-sticky').on('click', function(event){
+	// 	event.preventDefault();
+	// 	$('#sticky-area').append($stickyTemplate());
+	// 	console.log('sticky note button clicked');
+	// })
+
 	$('#projects').on('click', '.project-list-item', function(){
 				console.log('click is working');
 				console.log(this);
