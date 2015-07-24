@@ -44,7 +44,8 @@ $(document).ready(function(){
 					$('#main').html($mainTemplate(data));
 				});
 				$('#add-sticky').show();
-				$('#add-project').show()
+				$('#add-project').show();
+				$('#save-sticky').show();
 				$('#sticky-area').empty();
 				$('#welcome').hide();
 				$.get('/api/projects/:projectId' + $(this).data('project-id'), function(data){
