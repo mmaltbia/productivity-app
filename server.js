@@ -131,7 +131,7 @@ app.post('/users', function (req, res) {
   User.createSecure(newUser.email, newUser.password, function (err, user) {
     // console.log(user);
     req.login(user);
-    res.redirect('/');
+    res.redirect('/profile');
   });
 });
 
