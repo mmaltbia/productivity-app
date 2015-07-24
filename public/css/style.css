@@ -8,16 +8,17 @@
 
 html, body{
 	height:100%;
+
 }
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 12px;
+  font-size: 25px;
 }
 
 html {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Raleway, sans-serif;
   font-size: 100%;
   background: #333;
   color: #33383D;
@@ -27,6 +28,10 @@ html {
 /*[data-hidden="hidden"] {
    visibility: hidden;
 }*/
+
+h3, h4 {
+  font-family: Raleway, sans-serif;
+}
 
 #add-sticky {
   margin-top: 25px;
@@ -183,6 +188,15 @@ button:hover {
   clear: both;
 }
 
+#add-project {
+  margin-left: 15px;
+  background-color: #C43812;
+  border: none;
+}
+
+#myModal > div > div > div.modal-footer > div > button {
+      margin-left: 20px;
+}
 
 span.highlight {
 	color: #F15A24;
@@ -222,6 +236,8 @@ h1 {
 #main-2 {
 	background-color: #fff;
 	float: left;
+  height: 100vh;
+  padding-left: 0;
 }
 
 #main-2 > div {
@@ -245,6 +261,10 @@ h1 {
   list-style: none;
 }
 
+#sticky-area {
+  background-color: #fff;
+  padding-left: 0;
+}
 
 .note {
   background-color: yellow;
@@ -255,6 +275,10 @@ h1 {
     border: none;
     box-shadow: none;
     border-radius: 0;
+}
+
+#logout {
+  cursor: pointer;
 }
 
 .glyphicon .glyphicon-pencil {
@@ -301,12 +325,18 @@ input.btn.btn-success {
 	margin-top: 30px;
 }
 
+#search-input-group > div > input{
+  margin-left: 15px;
+}
+
 #sidebar > input {
 	font-family: Raleway;
 	font-size: 20px;
 	text-transform: uppercase;
 	color: #666666;
 	font-weight: 600;
+  border: none;
+  box-shadow: none;
 }
 
 div#sidebar {
@@ -354,73 +384,7 @@ div#sidebar {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-
-/* Text Editor Styling */
-$bg : #eee;
-
-* {box-sizing: border-box;}
-.btn, textarea, [contenteditable="true"]{
-  outline:none;
-}
-body {
-  background: $bg;
-}
-.rich-text-module {
-  margin:.5em 1em;
-  border:1px solid darken($bg, 10);
-  border-radius: 3px;
-  padding: .2em;
-}
-.ta-editor {
-  max-height: 280px;
-  height: auto;
-  overflow: auto;
-  font-family: inherit;
-  font-size: 100%;
-}
-.btn-group {
-  display: flex;
-  border:1px solid darken($bg, 5);
-  border-radius:3px;
-  background: #eee;
-  margin:.2em 0;
-  .btn {
-    flex: 1;
-    background: lighten($bg, 5);
-    color: lighten(#000000, 60);
-    border:0;
-    border-right: 1px solid darken($bg, 5);
-    font-size: 14px;
-    transition: all .5s ease;
-    &:hover { color: #000; }
-    &:last-child { border:0; }
-  }
-}
-.ta-html, .ta-text {
-  background: #fff;
-  padding: .5em;
-  margin: 0;
-  border:1px solid darken($bg, 10);
-}
-.ta-text {
-  font-family: monospace;
-  background: #ccc;
-  color: #666;
-  text-shadow: 1px 1px 0 rgba(255,255,255,.2);
-}
-.result {
-  background: darken($bg, 5);
-  color: #333;
-  font-family: monospace;
-  width: 100%;
-  max-width: 100%;
-  min-height: 200px;
-  border:1px solid darken($bg, 10);
-  padding: .5em;
-  text-shadow: 1px 1px 0 rgba(255,255,255,.2);
-  margin-top:.5em;
-}
-
+s
 #filename{
 	margin-top: 25px;
 }
@@ -431,6 +395,11 @@ body {
 
 #file-form{
 	margin-left: 4px;
+}
+
+#main-2 > span {
+  color: black;
+  margin-top: 5%;
 }
 
 /*Sticky Styling Begin*/
@@ -451,6 +420,16 @@ body {
 	background-color: #E5C22E;
 	min-height: 200px;
 	box-shadow: 2px 2px #A88F22;
+}
+
+#sticky-area > li > form > textarea{
+    border: none;
+    border-radius: 0px;
+    width: 266px;
+    margin: 0px;
+    min-height: 250px;
+    height: 250px;
+    background-color: rgb(217, 224, 33);
 }
 
 body > div > div.row.center {
