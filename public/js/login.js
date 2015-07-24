@@ -1,5 +1,6 @@
-// $(document).ready(function(){
-// console.log('hello');
+$(document).ready(function(){
+$.backstretch("../images/laptop.jpg");
+console.log('hello');
 
 // // Login Authentication
 //   $('#login-form').on("submit", function(event){
@@ -14,5 +15,5 @@
 //     });
 //   });
 
-// })
+})
 

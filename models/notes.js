@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var NotesSchema = new Schema({
-	title: String,
+	// title: String,
 	text: String
 });
 

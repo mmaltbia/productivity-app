@@ -6,9 +6,8 @@ $(document).ready(function(){
 		$loggedInTemplate = _.template($('#user-logged-in').html());
 
 
-	// //	Logged in User
-
-	// $('#user-info').html($loggedInTemplate(data));
+	// Logged in User
+	// $('#user-info').html($loggedInTemplate(users));
 
 	$.get('/api/me', function(data){
 		console.log(data);
@@ -16,6 +15,7 @@ $(document).ready(function(){
 			console.log('user logged in');
 			_.each(data.projects, function(project){
 				$('#projects').prepend($projectTemplate(project));
+				$('#user-info').html($loggedInTemplate(user.email));
 			})
 
 		} else {
@@ -32,7 +32,11 @@ $(document).ready(function(){
 					$('#main').html($mainTemplate(data));
 				});
 				$('#add-sticky').show();
+				$('#add-project').show()
 				$('#sticky-area').empty();
+				$.get('/api/projects/:projectId' + $(this).data('project-id'), function(data){
+					console.log(data);
+				})
 			})
 
 	// GET PROJECTS
@@ -43,6 +47,7 @@ $(document).ready(function(){
 
 	//	HIDE ADD STICKY NOTE BUTTON
 	$('#add-sticky').hide();
+	$('#save-sticky').hide();
 
 	//	ADD STICKY NOTE	
 	$('#add-sticky').on('click', function(event){
@@ -57,7 +62,7 @@ $(document).ready(function(){
 		var newNotes = [];
 		$('.sticky-form').each(function(){
 			var note = {
-				title: $(this).find('.title').val(),
+				// title: $(this).find('.title').val(),
 				text: $(this).find('.text-area').val()
 			};
 			console.log(note);
@@ -72,6 +77,8 @@ $(document).ready(function(){
 		})
 		console.log('save button clicked');
 	})
+
+
 
 	// SUBMIT NEW PROJECT
 	$('#add-project').on('click', function(event){

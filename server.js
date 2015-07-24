@@ -55,20 +55,24 @@ mongoose.connect(
 );
 
 app.get('/', function(req, res){
+	res.sendFile(__dirname + '/public/views/login.html')
+});
+
+app.get('/profile', function(req, res){
 	res.sendFile(__dirname + '/public/views/index.html')
 });
 
 // PROJECT ROUTES
 app.get('/api/projects/:id', function(req, res){
 	Project.findOne({"_id": req.params.id}).exec(function(req, project){
-		console.log(project);
+		// console.log(project);
 		res.send(project);
 	});
 });
 
 app.get('/api/projects', function(req, res){
 	Project.find().exec(function(req,projects){
-		console.log(projects);
+		// console.log(projects);
 
 		res.send(projects);
 	});
@@ -76,7 +80,7 @@ app.get('/api/projects', function(req, res){
 
 //	ADD PROJECTS TO CURRENT USER
 app.post('/api/projects', function(req, res){
-	console.log(req.body);
+	// console.log(req.body);
 	var project = new Project(req.body);
 	project.save(function(err, project){
 		User.findOne({_id: req.session.userId}).exec(function (err, user) {
@@ -87,10 +91,14 @@ app.post('/api/projects', function(req, res){
 	});
 });
 
-// //	STICKY NOTES ROUTE
-// app.get('/api/projects/:projectId/notes', function(req, res){
-// 	res.json(notes);
-// })
+//	STICKY NOTES ROUTE
+app.get('/api/projects/:projectId/', function(req, res){
+Project.findOne().populate('notes').exec(function (err, kitten) {
+  // console.log(project.notes) // Max
+})
+	// console.log(notes)
+	res.json(notes);
+})
 
 app.post('/api/projects/:projectId/notes', function(req, res){
 	var notes = req.body.notes;
@@ -121,7 +129,7 @@ app.post('/users', function (req, res) {
 
   // create new user with secure password
   User.createSecure(newUser.email, newUser.password, function (err, user) {
-    console.log(user);
+    // console.log(user);
     req.login(user);
     res.redirect('/');
   });
@@ -147,7 +155,7 @@ app.post('/login', function (req, res) {
     if (user){
       req.login(user);
       console.log('logged in:', user);
-      res.redirect('/');
+      res.redirect('/profile');
 
       console.log("logged in")
    

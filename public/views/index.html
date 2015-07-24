@@ -54,7 +54,7 @@
                  <script id="project-template" type='text/template'>
                     <li class="project-list-item col-xs-10" data-project-id="<%= _id %>">
                         <%= name %>
-                    </li><a href="#" data-target="#edit-modal"><span class="glyphicon glyphicon-pencil col-xs-2" data-hidden="hidden"></span></a>
+                    <a href="#" data-target="#edit-modal"><span class="col-xs-2" data-hidden="hidden"></span></a></li>
                  </script>
 
                     <div id="proj-status">
@@ -85,7 +85,7 @@
                   <div class="modal-footer">
                     <div class="row">
                         <input type="submit" class="btn btn-primary add col-xs-8" id="add-project">
-                        <button type="button" class="btn btn-default col-xs-2" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default col-xs-3" data-dismiss="modal">Close</button>
                     </div> 
                   </div>
                 </div>
@@ -141,16 +141,16 @@
             <!-- /Main Content Area 1-->
 
             <div id="main-2" class="container col-sm-8">  
-                <input type="submit" value="Add Sticky Note" class="btn btn-primary add col-xs-4" id="add-sticky"></input>
-                <div class="col-xs-4" id="save-button">
-                    <input type="submit" class="btn btn-primary add" id="add-project" value="Save"/>
+                <input type="submit" value="Add Sticky Note" class="btn btn-primary add col-sm-4" id="add-sticky"></input>
+                <div class="col-sm-4" id="save-button">
+                    <input type="submit" class="btn btn-primary add" id="save-sticky" value="Save"/>
                 </div>
+                <a href=><span class="glyphicon glyphicon-trash col-sm-4"></span></a>
                 <script id="sticky-template" type="text/template">
-                    <li>
-                        <form class="sticky-form" class="col-xs-4">
-                          <input class="title" type="text" placeholder="Title">
-                          <textarea class="text-area">Jot it down.</textarea>
-                        </form>
+                    <li class="col-xs-4">
+                            <form class="sticky-form">
+                              <textarea class="text-area"></textarea>
+                            </form>
                     </li>
                 </script>
 
