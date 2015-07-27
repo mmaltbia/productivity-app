@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
+    firstName: String,
+    lastName: String,
     email: String,
     passwordDigest: String,
     projects: [{
@@ -12,7 +14,7 @@ var UserSchema = new Schema({
 });
 
 // create a new user with secure (hashed) password
-UserSchema.statics.createSecure = function (email, password, callback) {
+UserSchema.statics.createSecure = function (firstName, lastName, email, password, callback) {
   // `this` references our schema
   // store it in variable `that` because `this` changes context in nested callbacks
   var that = this;
@@ -24,6 +26,8 @@ UserSchema.statics.createSecure = function (email, password, callback) {
       
       // create the new user (save to db) with hashed password
       that.create({
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         passwordDigest: hash
       }, callback);

@@ -18,7 +18,7 @@ span {
 }
 
 #nav {
-  background-color: #4D4D4D;
+  background-color: rgba(0, 0, 0, 0.5);
   height: 60px;
   color: #fff;
   font-weight: 600;
@@ -29,22 +29,34 @@ span {
 
 #login-form > div:nth-child(1) > h1 {
 	text-transform: uppercase;
-    color: white;
-    font-weight: 400;
-    padding-bottom: 15px;
-    margin-top: 10px;
+  color: white;
+  font-weight: 400;
+  padding-bottom: 15px;
+  margin-top: 10px;
 }
 
 #login-form {
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-top: 20%;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    border-radius: 5px;
-    color: white;
-    font-weight: 400;
-    padding-top: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 20%;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 400;
+  padding-top: 25px;
+}
+
+#signup-div{
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 20%;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 400;
+  padding-top: 25px;
 }
 
 #sign-up {
@@ -53,6 +65,12 @@ span {
 
 #login-form > button {
 	color: #FFFDFD;
-    background-color: #C43812;
-    border: none;
+  background-color: #C43812;
+  border: none;
 }
+
+#signup-modal > div > div > div.modal-body > form > div:nth-child(3) > input {
+  background-color: #C43812;
+  border: none;
+}
+

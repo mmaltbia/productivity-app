@@ -113,9 +113,9 @@ app.post('/api/projects/:projectId/notes', function(req, res){
 })
 
 //	SIGNUP/LOGIN ROUTES
-app.get('/signup', function(req, res){
-	res.sendFile(__dirname + '/public/views/signup.html')
-});
+// app.get('/signup', function(req, res){
+// 	res.sendFile(__dirname + '/public/views/signup.html')
+// });
 
 app.get('/login', function(req, res){
 	res.sendFile(__dirname + '/public/views/login.html');
@@ -128,7 +128,7 @@ app.post('/users', function (req, res) {
   var newUser = req.body.user;
 
   // create new user with secure password
-  User.createSecure(newUser.email, newUser.password, function (err, user) {
+  User.createSecure(newUser.firstName, newUser.lastName, newUser.email, newUser.password, function (err, user) {
     // console.log(user);
     req.login(user);
     res.redirect('/profile');

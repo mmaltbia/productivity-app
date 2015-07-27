@@ -1,4 +1,5 @@
 $(document).ready(function(){
+$.backstretch("../images/blurred-bg.jpg");
 
 	//	HIDE ADD STICKY NOTE BUTTON
 		$('#add-sticky').hide();
@@ -20,7 +21,7 @@ $(document).ready(function(){
 			console.log('user logged in');
 			_.each(data.projects, function(project){
 				$('#projects').prepend($projectTemplate(project));
-				$('#user-info').html($loggedInTemplate(user.email));
+				// $('#user-info').html($loggedInTemplate(user.email));
 			})
 
 		} else {
@@ -53,11 +54,16 @@ $(document).ready(function(){
 				})
 			})
 
+	$('.project-details').on('dblclick', '#project-title', function(event){
+			event.preventDefault();
+				console.log('dblclick is working');
+	})
+
 	// GET PROJECTS
 	$.get('/api/projects', function(data){
 		console.log(data);
 		
-	})
+	});
 
 	//	ADD STICKY NOTE	
 	$('#add-sticky').on('click', function(event){
@@ -86,7 +92,7 @@ $(document).ready(function(){
 			
 		})
 		console.log('save button clicked');
-	})
+	});
 
 
 
@@ -108,6 +114,7 @@ $(document).ready(function(){
 			$('#myModal').modal('hide');
 			$('#projects').prepend($projectTemplate(data));
 		});
+		$('#new-post')[0].reset();
 	});
 
 	//	Logout
